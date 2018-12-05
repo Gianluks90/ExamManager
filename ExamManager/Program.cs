@@ -6,7 +6,8 @@ namespace ExamManager
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var UI = new UserInterface();
+            UI.MainMenu();
         }
     }
 }
