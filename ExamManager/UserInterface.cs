@@ -99,7 +99,7 @@ namespace ExamManager
 
         private void ShowMode()
         {
-            Console.WriteLine($"La moda dei voti è: {processor.GetAverage()}.");
+            Console.WriteLine($"La moda dei voti è: {processor.GetMode()}.");
         }
 
         private void ShowSexistCheck()
