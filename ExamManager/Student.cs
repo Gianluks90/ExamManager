@@ -8,6 +8,13 @@ namespace ExamManager
 
     class Student
     {
+        private string[] v;
+
+        public Student(string[] v)
+        {
+            this.v = v;
+        }
+
         public int id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

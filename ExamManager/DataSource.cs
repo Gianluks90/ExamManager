@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace ExamManager
 {
     class DataSource
     {
-        private string v;
+        private string path;
 
         public DataSource(string v)
         {
-            this.v = v;
+            this.path = path;
         }
 
-        internal IEnumerable<Student> AllStudents()
+        public IEnumerable<Student> AllStudents()
         {
-            throw new NotImplementedException();
+            return File.ReadLines(path)
+                .Select(line => new Student(line.Split(","))).ToList();
         }
     }
 }

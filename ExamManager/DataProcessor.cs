@@ -94,13 +94,31 @@ namespace ExamManager
             return median;
         }
 
-        internal object GetMode()
+        public double GetMode()
         {
             return source.AllStudents()
                 .GroupBy(s => s.Grade)
                 .OrderByDescending(g => g.Count())
                 .First()
                 .Key;
+        }
+
+        public double AggregateMin()
+        {
+            return source.AllStudents()
+                .Aggregate((minGrade, nextGrade) => minGrade.Grade < nextGrade.Grade ? minGrade : nextGrade).Grade;
+        }
+
+        public double AggregateMax()
+        {
+            return source.AllStudents()
+                .Aggregate((maxGrade, nexGrade) => maxGrade.Grade > nexGrade.Grade ? maxGrade : nexGrade).Grade;
+        }
+
+        public double AggregateAverage()
+        {
+            return source.AllStudents()
+                .Aggregate(0, (avg, nextGrade) => avg + nextGrade.Grade, avg => avg / source.AllStudents().Count());
         }
     }
 }
