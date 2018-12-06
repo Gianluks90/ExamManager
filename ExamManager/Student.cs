@@ -5,6 +5,7 @@ using System.Text;
 namespace ExamManager
 {
     enum Sex { M, F, C }
+    //Ciao
 
     class Student
     {
