@@ -9,6 +9,7 @@ namespace ExamManager
     class DataSource
     {
         private string path;
+        private List<Student> students;
 
         public DataSource(string v)
         {
@@ -17,8 +18,12 @@ namespace ExamManager
 
         public IEnumerable<Student> AllStudents()
         {
-            return File.ReadLines(path)
+            if(students == null)
+            {
+                students = File.ReadLines(path)
                 .Select(line => new Student(line.Split(","))).ToList();
+            }
+            return students;
         }
     }
 }

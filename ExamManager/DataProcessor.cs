@@ -105,8 +105,15 @@ namespace ExamManager
 
         public double AggregateMin()
         {
+            //return source.AllStudents()
+            //    .Aggregate((minGrade, nextGrade) => minGrade.Grade < nextGrade.Grade ? minGrade : nextGrade).Grade;
+
+            //return source.AllStudents()
+            //    .Select(s => s.Grade).Aggregate((g1,g2) => g1 < g2 ? g1 : g2);  // Select prende così solo i voti;
+
+            var minGrade = int.MaxValue;    // " .MaxValue " è il massimo valore assumibile da un int;
             return source.AllStudents()
-                .Aggregate((minGrade, nextGrade) => minGrade.Grade < nextGrade.Grade ? minGrade : nextGrade).Grade;
+                .Aggregate(minGrade, (min, s) => min < s.Grade ? min : s.Grade);
         }
 
         public double AggregateMax()
@@ -115,10 +122,13 @@ namespace ExamManager
                 .Aggregate((maxGrade, nexGrade) => maxGrade.Grade > nexGrade.Grade ? maxGrade : nexGrade).Grade;
         }
 
-        public double AggregateAverage()
+        public double AggregateAverage()        // Con terzo metodo overload di Aggregate;
         {
+            var avg = 0;
+            var count = source.AllStudents().Count();
             return source.AllStudents()
-                .Aggregate(0, (avg, nextGrade) => avg + nextGrade.Grade, avg => avg / source.AllStudents().Count());
+                .Aggregate(avg, (sum, s) => sum + s.Grade
+                , sum => sum / count);
         }
     }
 }
