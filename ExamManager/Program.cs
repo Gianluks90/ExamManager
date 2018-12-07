@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamManager.Closure;
+using System;
 
 namespace ExamManager
 {
@@ -6,8 +7,16 @@ namespace ExamManager
     {
         static void Main(string[] args)
         {
-            var UI = new UserInterface();
-            UI.MainMenu();
+            //var dbSource = new DBDataSource();
+            //var proc = new DataProcessor(dbSource);
+
+            //var UI = new UserInterface(proc);
+            //UI = new UserInterface(new DataProcessor(new DBDataSource()));
+
+            //UI.MainMenu();
+
+            EsempioClosure esempio = new EsempioClosure();
+            Func<string, bool> myClosure = esempio.GenerateMyFunction();
         }
     }
 }

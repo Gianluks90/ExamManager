@@ -7,9 +7,14 @@ namespace ExamManager
 {
     class DataProcessor
     {
-        private DataSource source = new DataSource("Data/Studenti.csv");
+        private DataSource source;
         private int id;
         private Func<Student, bool> predicate;
+
+        public DataProcessor(DataSource nonSoNemmenoDiCheTipoSeiENonMiInteressa)
+        {
+            source = nonSoNemmenoDiCheTipoSeiENonMiInteressa;       // Astrazione, ora DataProcessor dipende da questa;
+        }
                
         public IEnumerable<Student> AllStudents()
         {

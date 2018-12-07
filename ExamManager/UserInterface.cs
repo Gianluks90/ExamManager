@@ -6,7 +6,8 @@ namespace ExamManager
 {
     class UserInterface
     {
-        private DataProcessor processor = new DataProcessor();
+        private DataProcessor processor;
+
         const string MENU_MESSAGE = 
             "Inserisci L per lista studenti;\n" +
             "Inserisci R per cercare tramite ID;\n" +
@@ -15,6 +16,11 @@ namespace ExamManager
             "Inserisci M per la moda;\n" +
             "Inserisci S per le verifiche;\n" +
             "Inserisci Q per chiudere;";
+
+        public UserInterface(DataProcessor processor)
+        {
+            this.processor = processor;
+        }
 
         public void MainMenu()
         {

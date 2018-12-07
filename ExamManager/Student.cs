@@ -6,7 +6,7 @@ namespace ExamManager
 {
     enum Sex { M, F, C }
 
-    class Student
+    public class Student
     {
         private string[] v;
 
