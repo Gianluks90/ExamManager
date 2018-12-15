@@ -4,8 +4,7 @@ using System.Text;
 
 namespace ExamManager
 {
-    enum Sex { M, F, C }
-    //Ciao
+    public enum Sex { M, F, C }
 
     public class Student
     {
